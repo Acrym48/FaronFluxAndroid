@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- === Новые (рефакторинг) === -->
+    <color name="toolbar_color">#FF1B1B1F</color>
+
+    <color name="log_green">#FF4CAF50</color>
+    <color name="log_gray">#FF888888</color>
+    <color name="log_red">#FFF44336</color>
+    <color name="log_yellow">#FFFFC107</color>
+
+    <color name="status_dot_active">#FF4CAF50</color>
+    <color name="status_dot_idle">#FF666666</color>
+    <color name="status_dot_error">#FFF44336</color>
+
+    <!-- === Легаси (используются в существующих XML) === -->
+    <color name="color_background">#FF121212</color>
+    <color name="colorEditTextBg">#FF1E1E1E</color>
+    <color name="colorBorder">#FF3A3A3A</color>
+    <color name="colorSuccess">#FF4CAF50</color>
+    <color name="colorError">#FFF44336</color>
+
+    <!-- На всякий случай — часто встречающиеся в темах -->
+    <color name="colorPrimary">#FF1B1B1F</color>
+    <color name="colorPrimaryDark">#FF000000</color>
+    <color name="colorAccent">#FF4CAF50</color>
+    <color name="colorOnPrimary">#FFFFFFFF</color>
+    <color name="colorSurface">#FF1E1E1E</color>
+    <color name="colorOnSurface">#FFFFFFFF</color>
+    <color name="colorTextPrimary">#FFFFFFFF</color>
+    <color name="colorTextSecondary">#FFB0B0B0</color>
+</resources>
