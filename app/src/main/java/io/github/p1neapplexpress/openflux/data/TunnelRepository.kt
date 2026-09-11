@@ -25,4 +25,22 @@ class TunnelRepository(context: Context) {
             putString(Constants.PREF_TUNNELS_KEY, json.encodeToString(tunnels))
         }
     }
+
+    /** ID последнего выбранного туннеля, или null если не выбран. */
+    fun getSelectedId(): Long? {
+        val v = prefs.getLong(Constants.PREF_SELECTED_TUNNEL_ID, -1L)
+        return if (v == -1L) null else v
+    }
+
+    fun setSelectedId(id: Long) {
+        prefs.edit { putLong(Constants.PREF_SELECTED_TUNNEL_ID, id) }
+    }
+
+    /** Возвращает выбранный туннель, или первый из списка, или null. */
+    fun getSelected(): Tunnel? {
+        val all = load()
+        if (all.isEmpty()) return null
+        val id = getSelectedId()
+        return all.firstOrNull { it.id == id } ?: all.first()
+    }
 }

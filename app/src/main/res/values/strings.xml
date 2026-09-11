@@ -37,4 +37,20 @@
     <string name="max_uid">MAX user ID</string>
     <string name="on">On</string>
     <string name="off">Off</string>
+    <string name="tap_to_connect">Tap to connect</string>
+    <string name="switch_tunnel">Enter Manually</string>
+    <string name="add_tunnel_short">Add</string>
+    <string name="no_tunnel">No tunnel</string>
+    <string name="uptime_label">Connected for</string>
+    <string name="select_config">Configuration</string>
+    <string name="no_configs">No configurations</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_delete">Delete</string>
+    <string name="delete_config_title">Delete configuration?</string>
+    <string name="delete_config_msg">This will permanently remove the configuration.</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit_config">Edit configuration</string>
+    <string name="cannot_delete_active">Stop the VPN first</string>
+    <string name="config_saved">Saved</string>
+    <string name="config_deleted">Deleted</string>
 </resources>

@@ -23,4 +23,5 @@ object Constants {
     const val PREF_PROFILE = "profile"
     const val PREF_LAST_PROFILE = "last_profile"
     const val PREF_TUNNELS_KEY = "tunnels"
+    const val PREF_SELECTED_TUNNEL_ID = "selected_tunnel_id"
 }

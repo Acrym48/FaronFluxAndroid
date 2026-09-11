@@ -50,7 +50,7 @@ class NativeProcessSupervisor(private val context: Context) {
     private fun spawn(transportType: String, payload: List<String>) {
         val libPath = "${context.applicationInfo.nativeLibraryDir}/$NATIVE_LIB"
         try {
-            
+            // Always pass --debug so stdout contains diagnostics.
             val cmd = listOf(libPath, "--debug") + payload
             Logx.i(TAG, "exec: ${cmd.joinToString(" ")}")
 
@@ -78,7 +78,7 @@ class NativeProcessSupervisor(private val context: Context) {
                 start()
             }
 
-            
+            // Через grace — считаем connected.
             handler.postDelayed({
                 if (!shuttingDown.get()) {
                     connected.set(true)

@@ -26,15 +26,13 @@ class MainActivity : AppCompatActivity() {
             WindowInsetsCompat.CONSUMED
         }
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        supportActionBar?.hide()
 
         setContentView(R.layout.activity_main)
         supportFragmentManager.beginTransaction()
             .replace(R.id.main, MainFragment(), "")
             .commit()
 
-        supportActionBar?.setBackgroundDrawable(
-            ContextCompat.getColor(this, R.color.toolbar_color).toDrawable()
-        )
 
         lifecycleScope.launch {
             EventBus.events.collect { ev ->

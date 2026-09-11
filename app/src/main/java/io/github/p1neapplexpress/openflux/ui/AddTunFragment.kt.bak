@@ -64,7 +64,7 @@ class AddTunFragment : BaseFragment() {
         val name = view.findViewById<TextView>(R.id.name)
         val save = view.findViewById<Button>(R.id.saveButton)
 
-        
+        // ─── Заполнение при редактировании ───
         editing?.let { t ->
             name.setText(t.name)
             transport = TransportType.from(t.transportType)

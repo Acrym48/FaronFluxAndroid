@@ -148,7 +148,7 @@ class TunnelsFragment : BaseFragment() {
         )
     }
 
-    
+    // ─────────── Dropdown ───────────
 
     private fun showConfigDropdown(anchor: View) {
         val tunnels = vm.tunnels.value.map { it.tunnel }
@@ -199,7 +199,7 @@ class TunnelsFragment : BaseFragment() {
 
         popup = pw
 
-        
+        // Анимация появления
         content.alpha = 0f
         content.translationY = -12f
         content.scaleY = 0.95f
@@ -214,7 +214,7 @@ class TunnelsFragment : BaseFragment() {
             .setInterpolator(OvershootInterpolator(1.2f))
             .start()
 
-        
+        // Вращаем шеврон
         chevron.animate().rotation(180f).setDuration(180).start()
         pw.setOnDismissListener {
             chevron.animate().rotation(0f).setDuration(180).start()
@@ -222,7 +222,7 @@ class TunnelsFragment : BaseFragment() {
         }
     }
 
-    
+    // ─────────── Состояние / анимации ───────────
 
     private fun showItemContextMenu(anchor: View, tunnel: Tunnel) {
         val inflater = LayoutInflater.from(requireContext())

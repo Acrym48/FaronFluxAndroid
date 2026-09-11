@@ -6,7 +6,6 @@ import android.net.VpnService
 import android.os.ParcelFileDescriptor
 import io.github.p1neapplexpress.openflux.event.AppEvent
 import io.github.p1neapplexpress.openflux.event.EventBus
-import io.github.p1neapplexpress.openflux.NativeBridge
 import io.github.p1neapplexpress.openflux.util.Constants
 import io.github.p1neapplexpress.openflux.util.Logx
 import io.github.p1neapplexpress.openflux.util.Routes
@@ -29,11 +28,14 @@ class VpnServiceController(private val service: VpnService) {
 
     val fd: Int get() = iface?.fd ?: -1
 
+    fun isConfigured(): Boolean = iface != null
+
     fun configure(intent: Intent) {
         if (iface != null) {
             Logx.w(TAG, "configure() called twice; ignoring")
             return
         }
+
         val name = intent.getStringExtra(Constants.INTENT_NAME) ?: "OpenFlux"
         val route = intent.getStringExtra(Constants.INTENT_ROUTE)
         val perApp = intent.getBooleanExtra(Constants.INTENT_PER_APP, false)
@@ -55,7 +57,6 @@ class VpnServiceController(private val service: VpnService) {
         Routes.addRoutes(service, builder, route)
         builder.addRoute(LOOPBACK_DNS, 32)
 
-        // Exclude self
         runCatching { builder.addDisallowedApplication(service.packageName) }
             .onFailure { Logx.w(TAG, "disallow self failed: ${it.message}") }
 
@@ -91,11 +92,6 @@ class VpnServiceController(private val service: VpnService) {
     }
 
     fun stop() {
-        // Close the ParcelFileDescriptor exactly once. Do NOT call
-        // NativeBridge.jniclose() here: tun2socks already owns the fd
-        // (it was passed via SCM_RIGHTS) and ParcelFileDescriptor will
-        // reclaim it. Calling close(fd) manually trips fdsan and aborts
-        // the process (SIGABRT).
         runCatching { iface?.close() }
             .onFailure { Logx.e(TAG, "close iface failed", it) }
         iface = null

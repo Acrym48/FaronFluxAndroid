@@ -111,7 +111,7 @@ class TunnelsViewModel(app: Application) : AndroidViewModel(app) {
         activeTunnelData = tunnel
 
         CoroutineScope(Dispatchers.IO).launch {
-            
+            // 1. Ждём bind
             var attempts = 0
             while (!bound && attempts < 100) {
                 delay(50)
@@ -124,7 +124,7 @@ class TunnelsViewModel(app: Application) : AndroidViewModel(app) {
             }
             Logx.i(TAG, "service bound, starting transport")
 
-            
+            // 2. Старт транспорта
             _active.value = TunnelState.StartingTransport(tunnel)
             try {
                 service?.startOpenFluxNative(
@@ -137,7 +137,7 @@ class TunnelsViewModel(app: Application) : AndroidViewModel(app) {
                 return@launch
             }
 
-            
+            // 3. Ждём транспорт
             var transportReady = false
             for (i in 1..40) {
                 delay(250)
@@ -157,7 +157,7 @@ class TunnelsViewModel(app: Application) : AndroidViewModel(app) {
                 return@launch
             }
 
-            
+            // 4. Старт tun2socks
             Logx.i(TAG, "starting tun2socks")
             _active.value = TunnelState.StartingTun2Socks(tunnel)
             try {
@@ -168,7 +168,7 @@ class TunnelsViewModel(app: Application) : AndroidViewModel(app) {
                 return@launch
             }
 
-            
+            // 5. Ждём VPN
             var vpnReady = false
             for (i in 1..40) {
                 delay(250)
@@ -223,7 +223,7 @@ class TunnelsViewModel(app: Application) : AndroidViewModel(app) {
 
     fun selectTunnel(tunnel: Tunnel) {
         if (_active.value.isActive) {
-            
+            // Не даём менять на лету — сначала остановить.
             stop()
         }
         repo.setSelectedId(tunnel.id)

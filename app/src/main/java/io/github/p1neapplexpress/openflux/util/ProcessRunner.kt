@@ -1,37 +1,41 @@
 package io.github.p1neapplexpress.openflux.util
 
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 object ProcessRunner {
-    data class Result(val exitCode: Int, val stdout: String, val stderr: String) {
-        val ok: Boolean get() = exitCode == 0
-    }
 
-    fun run(
+    /**
+     * Fire-and-forget: starts a process, reads its stdout in a background
+     * thread, does not wait for completion. For daemons (pdnsd, tun2socks).
+     */
+    fun execFireAndForget(
         command: List<String>,
         workingDir: String? = null,
-        timeoutMs: Long = 30_000L,
-    ): Result {
-        return try {
-            val pb = ProcessBuilder(command).redirectErrorStream(false)
-            if (workingDir != null) pb.directory(java.io.File(workingDir))
+    ) {
+        try {
+            val pb = ProcessBuilder(command).redirectErrorStream(true)
+            if (workingDir != null) pb.directory(File(workingDir))
             val p = pb.start()
-
-            val stdout = p.inputStream.bufferedReader().use { it.readText() }
-            val stderr = p.errorStream.bufferedReader().use { it.readText() }
-
-            if (!p.waitFor(timeoutMs, TimeUnit.MILLISECONDS)) {
-                p.destroyForcibly()
-                return Result(-1, stdout, "timeout after ${timeoutMs}ms: $stderr")
-            }
-            Result(p.exitValue(), stdout, stderr)
+            Thread {
+                try {
+                    p.inputStream.bufferedReader().useLines { lines ->
+                        lines.forEach { line ->
+                            if (line.isNotBlank()) {
+                                android.util.Log.d("Exec", line)
+                            }
+                        }
+                    }
+                } catch (_: Exception) {
+                }
+            }.apply { isDaemon = true; start() }
         } catch (e: Exception) {
-            Result(-1, "", e.message ?: e.javaClass.simpleName)
+            Logx.e("ProcessRunner", "exec failed: ${command.firstOrNull()}", e)
         }
     }
 
     fun killPidFile(path: String) {
-        val f = java.io.File(path)
+        val f = File(path)
         if (!f.exists()) return
         try {
             val pid = f.readText().trim().toIntOrNull() ?: return
@@ -42,6 +46,5 @@ object ProcessRunner {
         }
     }
 
-    fun join(list: List<String>, sep: String): String =
-        list.joinToString(sep)
+    fun join(list: List<String>, sep: String): String = list.joinToString(sep)
 }

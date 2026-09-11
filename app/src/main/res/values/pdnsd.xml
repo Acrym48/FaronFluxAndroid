@@ -2,6 +2,7 @@
 <resources>
 	<string name="pdnsd_conf" formatted="false" translatable="false">
 global {
+    daemon=off;
 	perm_cache=1024;
 	cache_dir="{DIR}";
 	server_port = 8091;
