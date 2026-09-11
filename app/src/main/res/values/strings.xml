@@ -10,6 +10,7 @@
     <string name="prof_default">Default</string>
 
     <string name="yandex_docs_backend">Yandex.Docs backend</string>
+    <string name="vyandex_backend">Yandex.Docs backend (Volga)</string>
     <string name="max_messenger_backend">MAX Messenger backend</string>
 
     <string name="starting_transport">Starting transport…</string>
@@ -53,4 +54,12 @@
     <string name="cannot_delete_active">Stop the VPN first</string>
     <string name="config_saved">Saved</string>
     <string name="config_deleted">Deleted</string>
+    <string name="notify_action_stop">Disconnect</string>
+    <string name="notify_msg_idle">Idle</string>
+    <string name="notify_msg_connecting">Connecting…</string>
+    <string name="notify_msg_starting_transport">Starting transport…</string>
+    <string name="notify_msg_starting_tun2socks">Starting tun2socks…</string>
+    <string name="notify_msg_running">Tunnel is active</string>
+    <string name="notify_msg_error">Error</string>
+    <string name="notify_channel_desc">VPN service status</string>
 </resources>

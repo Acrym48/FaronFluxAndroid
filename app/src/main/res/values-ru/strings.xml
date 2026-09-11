@@ -10,6 +10,7 @@
     <string name="prof_default">По умолчанию</string>
 
     <string name="yandex_docs_backend">Бэкенд Yandex.Docs</string>
+    <string name="vyandex_backend">Бэкенд Yandex.Docs (Volga)</string>
     <string name="max_messenger_backend">Бэкенд MAX Messenger</string>
 
     <string name="starting_transport">Запуск транспорта…</string>
@@ -67,4 +68,12 @@
     <string name="err_tun2socks_missing">Не найден бинарник tun2socks</string>
     <string name="err_sendfd_failed">Не удалось передать tun fd</string>
 
+    <string name="notify_action_stop">Отключить</string>
+    <string name="notify_msg_idle">Простой</string>
+    <string name="notify_msg_connecting">Подключение…</string>
+    <string name="notify_msg_starting_transport">Запуск транспорта…</string>
+    <string name="notify_msg_starting_tun2socks">Запуск tun2socks…</string>
+    <string name="notify_msg_running">Туннель активен</string>
+    <string name="notify_msg_error">Ошибка</string>
+    <string name="notify_channel_desc">Статус VPN-сервиса</string>
 </resources>

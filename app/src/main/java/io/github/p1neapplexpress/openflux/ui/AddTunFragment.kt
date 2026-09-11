@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
-import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.switchmaterial.SwitchMaterial
 import io.github.p1neapplexpress.openflux.R
 import io.github.p1neapplexpress.openflux.data.TransportType
@@ -64,7 +63,7 @@ class AddTunFragment : BaseFragment() {
         val name = view.findViewById<TextView>(R.id.name)
         val save = view.findViewById<Button>(R.id.saveButton)
 
-        
+        // ─── Заполнение при редактировании ───
         editing?.let { t ->
             name.setText(t.name)
             transport = TransportType.from(t.transportType)
@@ -74,6 +73,12 @@ class AddTunFragment : BaseFragment() {
                     maxContainer.isVisible = false
                     yandexContainer.isVisible = true
                     transportLabel.text = getString(R.string.yandex_docs_backend)
+                    docUrl.setText(argValue(t.transportConnPayload, "--url"))
+                }
+                TransportType.vyandex -> {
+                    maxContainer.isVisible = false
+                    yandexContainer.isVisible = true
+                    transportLabel.text = getString(R.string.vyandex_backend)
                     docUrl.setText(argValue(t.transportConnPayload, "--url"))
                 }
                 TransportType.max -> {
@@ -98,6 +103,12 @@ class AddTunFragment : BaseFragment() {
                     maxContainer.isVisible = false
                     yandexContainer.isVisible = true
                     transportLabel.text = getString(R.string.yandex_docs_backend)
+                },
+                onVyandex = {
+                    transport = TransportType.vyandex
+                    maxContainer.isVisible = false
+                    yandexContainer.isVisible = true
+                    transportLabel.text = getString(R.string.vyandex_backend)
                 },
                 onMax = {
                     transport = TransportType.max
@@ -166,6 +177,14 @@ class AddTunFragment : BaseFragment() {
                     if (debug) add("--debug")
                 }
             }
+            TransportType.vyandex -> {
+                if (docUrl.isEmpty()) return null
+                buildList {
+                    add("--client"); add("--transport"); add("vyandex")
+                    add("--url"); add(docUrl)
+                    if (debug) add("--debug")
+                }
+            }
             TransportType.max -> {
                 if (maxToken.isEmpty() || maxUid.isEmpty()) return null
                 buildList {
@@ -188,6 +207,7 @@ class AddTunFragment : BaseFragment() {
 
     private fun View.showTransportDropdown(
         onYandex: () -> Unit,
+        onVyandex: () -> Unit,
         onMax: () -> Unit,
     ) {
         val popupView = LayoutInflater.from(context).inflate(R.layout.dropdown_transport_menu, null)
@@ -203,8 +223,17 @@ class AddTunFragment : BaseFragment() {
             isOutsideTouchable = true
             isFocusable = true
         }
-        popupView.findViewById<View>(R.id.option_scan_qr)?.setOnClickListener { onYandex(); popup.dismiss() }
-        popupView.findViewById<View>(R.id.option_enter_manually)?.setOnClickListener { onMax(); popup.dismiss() }
+
+        popupView.findViewById<View>(R.id.option_yandex)?.setOnClickListener {
+            onYandex(); popup.dismiss()
+        }
+        popupView.findViewById<View>(R.id.option_vyandex)?.setOnClickListener {
+            onVyandex(); popup.dismiss()
+        }
+        popupView.findViewById<View>(R.id.option_max)?.setOnClickListener {
+            onMax(); popup.dismiss()
+        }
+
         popupView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
         popup.showAsDropDown(this, 0, -popupView.measuredHeight - height - 8.dpToPx(context))
     }

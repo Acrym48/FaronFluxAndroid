@@ -81,6 +81,7 @@ class TunAdapter : RecyclerView.Adapter<TunAdapter.VH>() {
             } else {
                 state.text = when (TransportType.from(item.tunnel.transportType)) {
                     TransportType.yandex -> v.context.getString(R.string.yandex_docs_backend)
+                    TransportType.vyandex -> v.context.getString(R.string.vyandex_backend)
                     TransportType.max -> v.context.getString(R.string.max_messenger_backend)
                 }
                 stopPulse()
