@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#090C15"
+    android:background="?attr/colorSurfaceContainerLowest"
     android:fillViewport="true">
 
     <LinearLayout
@@ -12,8 +12,37 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
-        android:paddingTop="24dp"
         android:paddingBottom="32dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_back"
+                android:contentDescription="@string/back"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="?attr/colorOnSurface" />
+
+            <TextView
+                android:id="@+id/formTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="New tunnel" />
+        </LinearLayout>
 
         <!-- Tunnel Name -->
         <com.google.android.material.textfield.TextInputLayout
@@ -21,24 +50,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:boxBackgroundColor="#141924"
-            app:boxCornerRadiusBottomEnd="18dp"
-            app:boxCornerRadiusBottomStart="18dp"
-            app:boxCornerRadiusTopEnd="18dp"
-            app:boxCornerRadiusTopStart="18dp"
-            app:boxStrokeColor="#2A3240"
+            app:boxBackgroundColor="?attr/colorSurfaceContainerHighest"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@color/box_stroke_color"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="1dp"
-            app:hintTextColor="#98A0AE">
+            app:hintTextColor="?attr/colorOnSurfaceVariant"
+            android:hint="@string/tunnel_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:hint="Tunnel Name"
+                android:layout_height="64dp"
+                android:hint="@string/tunnel_name"
                 android:paddingHorizontal="16dp"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#98A0AE"
+                android:textColor="?attr/colorOnSurface"
+                android:textColorHint="?attr/colorOnSurfaceVariant"
                 android:inputType="textCapSentences|textNoSuggestions"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -50,14 +80,15 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/transportSelector"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="68dp"
+            android:layout_marginTop="14dp"
             android:clickable="true"
             android:focusable="true"
-            app:cardBackgroundColor="#141924"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="?attr/colorSurfaceContainerLow"
+            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
-            app:strokeColor="#2A3240"
+            app:rippleColor="@color/accent_glow"
+            app:strokeColor="?attr/colorOutlineVariant"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -77,26 +108,25 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Transport type"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
+                        android:text="@string/select_transport"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/selectedTransport"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:textColor="#98A0AE"
+                        android:textColor="?attr/colorOnSurfaceVariant"
                         android:textSize="13sp" />
 
                 </LinearLayout>
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_chev_right"
-                    app:tint="#4F7CFF"
-                    tools:tint="#4F7CFF" />
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_chevron_down"
+                    app:tint="?attr/colorOutline" />
 
             </LinearLayout>
 
@@ -106,14 +136,15 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/debugSelector"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="68dp"
+            android:layout_marginTop="14dp"
             android:clickable="true"
             android:focusable="true"
-            app:cardBackgroundColor="#141924"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="?attr/colorSurfaceContainerLow"
+            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
-            app:strokeColor="#2A3240"
+            app:rippleColor="@color/accent_glow"
+            app:strokeColor="?attr/colorOutlineVariant"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -132,17 +163,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Debug mode"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
+                        android:text="@string/debug_mode"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/selectedDebug"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="Off"
-                        android:textColor="#98A0AE"
+                        android:text="@string/off"
+                        android:textColor="?attr/colorOnSurfaceVariant"
                         android:textSize="13sp" />
 
                 </LinearLayout>
@@ -151,10 +182,7 @@
                     android:id="@+id/debugSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false"
-                    app:thumbTint="#4F7CFF"
-                    app:trackTint="#334F7CFF"
-                    app:useMaterialThemeColors="false" />
+                    android:checked="false" />
 
             </LinearLayout>
 
@@ -165,25 +193,26 @@
             android:id="@+id/yandexUrlContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:boxBackgroundColor="#141924"
-            app:boxCornerRadiusBottomEnd="18dp"
-            app:boxCornerRadiusBottomStart="18dp"
-            app:boxCornerRadiusTopEnd="18dp"
-            app:boxCornerRadiusTopStart="18dp"
-            app:boxStrokeColor="#2A3240"
+            android:layout_marginTop="14dp"
+            app:boxBackgroundColor="?attr/colorSurfaceContainerHighest"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@color/box_stroke_color"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="1dp"
-            app:hintTextColor="#98A0AE">
+            app:hintTextColor="?attr/colorOnSurfaceVariant"
+            android:hint="@string/document_url">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/documentUrl"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:hint="Document URL"
+                android:hint="@string/document_url"
                 android:paddingHorizontal="16dp"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#98A0AE"
+                android:textColor="?attr/colorOnSurface"
+                android:textColorHint="?attr/colorOnSurfaceVariant"
                 android:inputType="textUri"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -200,24 +229,29 @@
             android:visibility="gone">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/maxTokenContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:boxBackgroundColor="#141924"
-                app:boxCornerRadiusBottomEnd="18dp"
-                app:boxCornerRadiusBottomStart="18dp"
-                app:boxCornerRadiusTopEnd="18dp"
-                app:boxCornerRadiusTopStart="18dp"
-                app:boxStrokeColor="#2A3240">
+                android:layout_marginTop="14dp"
+                app:boxBackgroundColor="?attr/colorSurfaceContainerHighest"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="@color/box_stroke_color"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintTextColor="?attr/colorOnSurfaceVariant"
+                android:hint="@string/max_token">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/maxToken"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:hint="MAX Access Token"
+                    android:hint="@string/max_token"
                     android:paddingHorizontal="16dp"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#98A0AE"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textColorHint="?attr/colorOnSurfaceVariant"
                     android:inputType="textNoSuggestions|textVisiblePassword"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -227,24 +261,29 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/maxUidContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:boxBackgroundColor="#141924"
-                app:boxCornerRadiusBottomEnd="18dp"
-                app:boxCornerRadiusBottomStart="18dp"
-                app:boxCornerRadiusTopEnd="18dp"
-                app:boxCornerRadiusTopStart="18dp"
-                app:boxStrokeColor="#2A3240">
+                android:layout_marginTop="14dp"
+                app:boxBackgroundColor="?attr/colorSurfaceContainerHighest"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="@color/box_stroke_color"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintTextColor="?attr/colorOnSurfaceVariant"
+                android:hint="@string/max_uid">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/maxUserId"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:hint="MAX Exit Node User Id"
+                    android:hint="@string/max_uid"
                     android:paddingHorizontal="16dp"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#98A0AE"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textColorHint="?attr/colorOnSurfaceVariant"
                     android:inputType="number"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -259,13 +298,14 @@
             android:id="@+id/saveButton"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#334F7CFF"
-            android:text="Save"
+            android:layout_marginTop="28dp"
+            android:backgroundTint="?attr/colorPrimary"
+            android:text="@string/save"
             android:textAllCaps="false"
-            android:textColor="#fff"
-            android:textSize="15sp"
-            app:cornerRadius="18dp" />
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="16dp" />
 
     </LinearLayout>
 

@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "io.github.p1neapplexpress.openflux"
-    compileSdk = 34
+    namespace = "dev.faron.flux"
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "io.github.p1neapplexpress.openflux"
+        applicationId = "dev.faron.flux"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -46,7 +46,6 @@ android {
     }
 
     kotlin {
-        jvmToolchain(17)
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
         }
@@ -71,5 +70,5 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
-    implementation("io.github.g00fy2.quickie:quickie-bundled:1.10.0")
+    implementation("io.github.g00fy2.quickie:quickie-bundled:1.12.0")
 }

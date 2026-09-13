@@ -3,9 +3,9 @@
 
     <!-- ON -->
     <item android:state_checked="true"
-        android:color="#fff"/>
+        android:color="#FFFFFF" />
 
     <!-- OFF -->
-    <item android:color="#eee"/>
+    <item android:color="#8D96A8" />
 
 </selector>

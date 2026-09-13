@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_dropdown"
+    android:background="@drawable/bg_dropdown_menu"
     android:orientation="vertical"
-    android:padding="8dp"
-    tools:background="#000">
+    android:paddingVertical="6dp"
+    android:minWidth="260dp">
 
-    <!-- Yandex.Docs -->
     <LinearLayout
         android:id="@+id/option_yandex"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:background="?attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="12dp"
+        android:paddingHorizontal="16dp"
         android:clickable="true"
         android:focusable="true">
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="14dp"
             android:scaleType="centerCrop"
             android:src="@drawable/yandex_docs" />
 
@@ -32,33 +30,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/yandex_docs_backend"
-            android:textColor="#fff"
-            android:textSize="16sp" />
-
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginVertical="4dp"
-        android:background="@android:color/darker_gray" />
+        android:layout_marginHorizontal="12dp"
+        android:background="?attr/colorOutlineVariant" />
 
-    <!-- Yandex.Docs (Volga) -->
     <LinearLayout
         android:id="@+id/option_vyandex"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:background="?attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="12dp"
+        android:paddingHorizontal="16dp"
         android:clickable="true"
         android:focusable="true">
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="14dp"
             android:scaleType="centerCrop"
             android:src="@drawable/volga" />
 
@@ -66,33 +62,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/vyandex_backend"
-            android:textColor="#fff"
-            android:textSize="16sp" />
-
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginVertical="4dp"
-        android:background="@android:color/darker_gray" />
+        android:layout_marginHorizontal="12dp"
+        android:background="?attr/colorOutlineVariant" />
 
-    <!-- MAX Messenger -->
     <LinearLayout
         android:id="@+id/option_max"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:background="?attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="12dp"
+        android:paddingHorizontal="16dp"
         android:clickable="true"
         android:focusable="true">
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="14dp"
             android:scaleType="centerCrop"
             android:src="@drawable/max_msg" />
 
@@ -100,9 +94,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/max_messenger_backend"
-            android:textColor="#fff"
-            android:textSize="16sp" />
-
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="15sp" />
     </LinearLayout>
 
 </LinearLayout>

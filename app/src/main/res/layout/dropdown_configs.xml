@@ -17,7 +17,7 @@
         android:paddingBottom="6dp"
         android:letterSpacing="0.14"
         android:textAllCaps="true"
-        android:textColor="@color/text_tertiary"
+        android:textColor="?attr/colorOutline"
         android:textSize="10sp"
         android:text="@string/select_config" />
 

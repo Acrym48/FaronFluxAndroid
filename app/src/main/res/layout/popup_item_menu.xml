@@ -23,14 +23,14 @@
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:src="@drawable/ic_edit"
-            app:tint="@color/text_secondary" />
+            app:tint="?attr/colorOnSurfaceVariant" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="@string/action_edit"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginHorizontal="10dp"
-        android:background="@color/bg_card_stroke" />
+        android:background="?attr/colorOutlineVariant" />
 
     <LinearLayout
         android:id="@+id/menu_delete"

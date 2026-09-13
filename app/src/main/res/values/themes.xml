@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.SoxMax" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.SoxMax" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/accent_blue</item>
-        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSecondary">@color/state_running</item>
+        <item name="colorSecondaryContainer">@color/nav_container</item>
+        <item name="colorOnSecondaryContainer">@color/text_primary</item>
+        <item name="colorSurface">@color/bg_card</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorSurfaceVariant">@color/bg_raised</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+        <item name="colorOutline">@color/bg_card_stroke</item>
+        <item name="colorOutlineVariant">@color/bg_card_stroke</item>
+        <item name="colorControlActivated">@color/accent_blue</item>
+        <item name="colorControlNormal">@color/text_secondary</item>
+
         <item name="android:windowBackground">@color/bg_deep</item>
         <item name="android:statusBarColor" tools:targetApi="l">@android:color/transparent</item>
         <item name="android:navigationBarColor" tools:targetApi="l">@android:color/transparent</item>

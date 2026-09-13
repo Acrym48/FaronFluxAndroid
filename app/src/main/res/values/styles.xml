@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="DropdownAnimation">
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+        <item name="android:windowEnterAnimation">@anim/dropdown_enter</item>
+        <item name="android:windowExitAnimation">@anim/dropdown_exit</item>
+    </style>
+
+    <style name="Widget.OpenFlux.BottomNav" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">?attr/colorSurfaceContainerLow</item>
+        <item name="itemIconTint">@color/nav_item_selector</item>
+        <item name="itemTextColor">@color/nav_item_selector</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemRippleColor">@color/accent_glow</item>
     </style>
 </resources>
